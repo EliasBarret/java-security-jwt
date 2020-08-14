@@ -19,8 +19,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Phone {
-
+public class Telefone {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -29,39 +28,34 @@ public class Phone {
 	@Column
 	private String ddd;
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="user")
+    @JoinColumn(name="usuario_id")
     @JsonIgnore
-	private User user;
-
+	private Usuario usuario;
+	
 	public Long getId() {
 		return id;
 	}
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 	public String getNumero() {
 		return numero;
 	}
-
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
-
 	public String getDdd() {
 		return ddd;
 	}
-
 	public void setDdd(String ddd) {
 		this.ddd = ddd;
 	}
-
-	public User getUser() {
-		return user;
+	public Usuario getUsuario() {
+		return usuario;
 	}
-
-	public void setUser(User user) {
-		this.user = user;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
+	
+	
 }

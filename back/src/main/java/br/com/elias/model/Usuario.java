@@ -17,93 +17,71 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-
+@Table(name="usuario")
 @Entity
-@Table(name = "user")
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class Usuario {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", updatable = false, unique = true, nullable = false)
 	private UUID id;
 	@Column
-	private String name;
+	private String nome;
 	@Column
 	private String email;
 	@Column
 	private String password;
 	@Column
-	private Date registerDate;
+	private Date dataCriacao;
 	@Column
-	private Date lastUpdateDate;
+	private Date dataAtualizacao;
 	@Column
-	private Date lastLoginDate;
-	
-	@OneToMany(mappedBy="user", fetch = FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true)
-	private List<Phone> phones;
-
-	public List<Phone> getPhones() {
-		return phones;
-	}
-
-	public void setPhones(List<Phone> phones) {
-		this.phones = phones;
-	}
+	private Date ultimoLogin;
+	@OneToMany(mappedBy="usuario", fetch = FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true)
+	private List<Telefone> telefones;
 
 	public UUID getId() {
 		return id;
 	}
-
 	public void setId(UUID id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
-
-	public void setName(String name) {
-		this.name = name;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
-
 	public String getEmail() {
 		return email;
 	}
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 	public String getPassword() {
 		return password;
 	}
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	public Date getRegisterDate() {
-		return registerDate;
+	public Date getDataCriacao() {
+		return dataCriacao;
 	}
-
-	public void setRegisterDate(Date registerDate) {
-		this.registerDate = registerDate;
+	public void setDataCriacao(Date dataCriacao) {
+		this.dataCriacao = dataCriacao;
 	}
-
-	public Date getLastUpdateDate() {
-		return lastUpdateDate;
+	public Date getDataAtualizacao() {
+		return dataAtualizacao;
 	}
-
-	public void setLastUpdateDate(Date lastUpdateDate) {
-		this.lastUpdateDate = lastUpdateDate;
+	public void setDataAtualizacao(Date dataAtualizacao) {
+		this.dataAtualizacao = dataAtualizacao;
 	}
-
-	public Date getLastLoginDate() {
-		return lastLoginDate;
+	public Date getUltimoLogin() {
+		return ultimoLogin;
 	}
-
-	public void setLastLoginDate(Date lastLoginDate) {
-		this.lastLoginDate = lastLoginDate;
+	public void setUltimoLogin(Date ultimoLogin) {
+		this.ultimoLogin = ultimoLogin;
 	}
 }
